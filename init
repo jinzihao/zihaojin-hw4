@@ -1,0 +1,27 @@
+#!/bin/bash
+IFACE=`ifconfig | grep 'eth0' | cut -d ' ' -f 1`
+HOST=`echo $IFACE | cut -c1-2`
+dhclient $IFACE
+if [ $HOST == 'h1' ]
+then
+    echo "h1"
+    sudo echo 'nameserver 10.2.3.1' > /etc/resolv.conf
+elif [ $HOST == 'h2' ]
+then
+    echo "h2"
+    sudo echo 'nameserver 10.2.3.1' > /etc/resolv.conf
+elif [ $HOST == 'h3' ]
+then
+    echo "h3"
+    sudo dnsmasq
+elif [ $HOST == 'h4' ]
+then
+    echo "h4"
+    cd h4_www_root
+    nohup python -m SimpleHTTPServer 8080 &
+elif [ $HOST == 'h5' ]
+then
+    echo "h5"
+    cd h5_www_root
+    nohup python -m SimpleHTTPServer 8080 &
+fi

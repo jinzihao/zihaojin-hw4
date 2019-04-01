@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo route add -host 10.1.2.1 s1-eth2
+sudo arp -s 10.1.2.1 $1
+sudo tcpdump -s 0 udp port 53 -i s1-eth2 -w s1.pcap &
+sudo python attack.py &
