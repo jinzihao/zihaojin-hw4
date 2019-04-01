@@ -16,4 +16,4 @@ This time, `s1init` is run on `s1` to do the DNS spoofing attack. Now, when h1 t
 
 The log file of dnsmasq is shown here. The DNS query actually reached h3, but s1's spoofed DNS response reaches h1 first.
 
-![](img/3.png)
+![](img/3.PNG)
